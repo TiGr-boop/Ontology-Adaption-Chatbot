@@ -153,7 +153,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasGradient">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Longitudinal_plane"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeGradient"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient"/>
     </owl:ObjectProperty>
     
 
@@ -210,7 +210,7 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLatency"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency"/>
     </owl:ObjectProperty>
     
 
@@ -220,7 +220,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasLenght">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Special_structures_dimension"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLength"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length"/>
     </owl:ObjectProperty>
     
 
@@ -230,7 +230,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasParticulatesIntensity">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_intensity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity"/>
     </owl:ObjectProperty>
     
 
@@ -240,7 +240,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasParticulatesSize">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_size"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size"/>
     </owl:ObjectProperty>
     
 
@@ -290,7 +290,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasRadius">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Curves"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeRadius"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius"/>
     </owl:ObjectProperty>
     
 
@@ -338,7 +338,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasShoulderWidth">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Special_structures_dimension"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeShoulder_width"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width"/>
     </owl:ObjectProperty>
     
 
@@ -433,7 +433,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasSuperelevation">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Transverse_plane"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeSuperelevation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation"/>
     </owl:ObjectProperty>
     
 
@@ -480,7 +480,7 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeThroughput"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput"/>
     </owl:ObjectProperty>
     
 
@@ -526,7 +526,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasWidth">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Special_structures_dimension"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWidth"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width"/>
     </owl:ObjectProperty>
     
 
@@ -1690,94 +1690,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeGradient -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeGradient">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLatency -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLatency">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLength -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLength">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_intensity -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_intensity">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_size -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_size">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeRadius -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeRadius">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeShoulder_width -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeShoulder_width">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeSuperelevation -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeSuperelevation">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeThroughput -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeThroughput">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWeight -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWeight">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWidth -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWidth">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Dynamic_entity -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Dynamic_entity">
@@ -1880,10 +1792,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeGradient"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient"/>
     </owl:Class>
     
 
@@ -1891,7 +1811,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeGradient"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Gradient"/>
     </owl:Class>
     
 
@@ -2124,10 +2044,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLatency"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency"/>
     </owl:Class>
     
 
@@ -2135,7 +2063,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLatency"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Latency"/>
     </owl:Class>
     
 
@@ -2156,10 +2084,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLength"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length"/>
     </owl:Class>
     
 
@@ -2167,7 +2103,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeLength"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Length"/>
     </owl:Class>
     
 
@@ -2300,10 +2236,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_intensity"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity"/>
     </owl:Class>
     
 
@@ -2311,7 +2255,15 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_intensity"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_intensity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
     </owl:Class>
     
 
@@ -2319,7 +2271,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_size"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size_scalar"/>
     </owl:Class>
     
@@ -2328,7 +2280,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeParticulates_size"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Particulates_size"/>
     </owl:Class>
     
 
@@ -2459,10 +2411,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeRadius"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius"/>
     </owl:Class>
     
 
@@ -2470,7 +2430,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeRadius"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Radius"/>
     </owl:Class>
     
 
@@ -2627,10 +2587,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeShoulder_width"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width"/>
     </owl:Class>
     
 
@@ -2638,7 +2606,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeShoulder_width"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Shoulder_width"/>
     </owl:Class>
     
 
@@ -2863,10 +2831,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeSuperelevation"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation_scalar"/>
     </owl:Class>
     
@@ -2875,7 +2851,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeSuperelevation"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Superelevation"/>
     </owl:Class>
     
 
@@ -2985,10 +2961,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeThroughput"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput"/>
     </owl:Class>
     
 
@@ -2996,7 +2980,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeThroughput"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Throughput"/>
     </owl:Class>
     
 
@@ -3141,10 +3125,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWeight"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight"/>
     </owl:Class>
     
 
@@ -3152,7 +3144,15 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWeight"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Quantity"/>
     </owl:Class>
     
 
@@ -3160,7 +3160,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width_range -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width_range">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWidth"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width"/>
     </owl:Class>
     
 
@@ -3168,7 +3168,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width_scalar -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width_scalar">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeWidth"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Width"/>
     </owl:Class>
     
 

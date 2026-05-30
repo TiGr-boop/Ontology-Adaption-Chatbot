@@ -2,7 +2,7 @@ import chainlit as cl
 from chainlit import server as chainlit_server
 from config import ONTOLOGY_PATH, LLAMA_MODEL, MAX_REPAIR_ATTEMPTS, FINAL_ONTOLOGY_PATH
 from RAG_retrieval import retrieve
-from llm import build_llm_prompt, call_llm, call_llm_repair
+from llm import build_llm_prompt, call_llm, call_llm_repair, call_llm_change_description
 from guardrail import preprocess_llm_response, check_syntax
 from final_onto import create_final_ontology
 import logging
@@ -41,6 +41,7 @@ async def main(message: cl.Message):
     STEP 2: Generating an Ontology Patch (LLM RESPONSE)
     STEP 3: GUARD RAIL LAYER (Syntax-Prüfung)
     STEP 4: Zusammensetzen der Ontologie (FINAL ONTOLOGY)
+    STEP 5: Reasoner
     """
 
     scenario = message.content
@@ -132,7 +133,7 @@ async def main(message: cl.Message):
     step_message = cl.Message("Step 4/5: Erstellung der finalen Ontologie.")
     await step_message.send()
 
-    final_ontology = await create_final_ontology(graph)
+    final_ontology, _, _ = await create_final_ontology(graph)
     logger.info("Finale Ontologie wurde erstellt.")
 
     # Speichern der Ontologie 
@@ -142,9 +143,13 @@ async def main(message: cl.Message):
         format="xml"
     )
 
+    description_message = await call_llm_change_description(onto_patch)
+
+
     final_message = cl.Message(
         "Finale Ontologie gespeichert unter:\n"
-        f"{FINAL_ONTOLOGY_PATH}"
+        f"{FINAL_ONTOLOGY_PATH}\n\n"
+        f"{description_message}"
     )
     await final_message.send()
 

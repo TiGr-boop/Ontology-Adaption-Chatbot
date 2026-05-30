@@ -500,3 +500,15 @@
 2026-05-29 13:19:07,708 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
 2026-05-29 13:19:07,710 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
 2026-05-29 13:19:07,710 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-05-30 12:29:53,080 [INFO] ODD-RAG – Lade Ontologie 'ontology.rdf'
+2026-05-30 12:29:53,390 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-05-30 12:29:53,395 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-05-30 12:29:53,395 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-05-30 12:45:15,723 [INFO] ODD-RAG – Lade Ontologie 'ontology.rdf'
+2026-05-30 12:45:15,976 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-05-30 12:45:15,978 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-05-30 12:45:15,978 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-05-30 12:59:28,036 [INFO] ODD-RAG – Lade Ontologie 'ontology.rdf'
+2026-05-30 12:59:28,291 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-05-30 12:59:28,294 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-05-30 12:59:28,294 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L6-v2

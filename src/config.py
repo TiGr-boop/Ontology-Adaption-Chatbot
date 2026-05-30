@@ -98,3 +98,9 @@ Output ONLY the corrected Turtle inside a single ```turtle ... ``` block.
 Do NOT explain anything. Do NOT add prose. Fix ONLY syntax errors.
 """
 MAX_REPAIR_ATTEMPTS = 2
+
+RESULT_DESCRIPTION_SYSTEM_PROMPT = """
+You are an RDF/Turtle expert.
+You receive a Turtle patch. This patch will be added to a base ontology.
+Describe the Turtle patch and what it changes in the base ontology with natural language in german.
+"""

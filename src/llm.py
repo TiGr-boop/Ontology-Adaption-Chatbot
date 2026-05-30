@@ -1,4 +1,4 @@
-from config import SYSTEM_PROMPT, LLAMA_MODEL, REPAIR_SYSTEM_PROMPT
+from config import SYSTEM_PROMPT, LLAMA_MODEL, REPAIR_SYSTEM_PROMPT, RESULT_DESCRIPTION_SYSTEM_PROMPT
 from ollama import chat
 from asyncio import to_thread
 
@@ -63,6 +63,24 @@ async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLAM
         model,
         messages=[
             {"role": "system", "content": REPAIR_SYSTEM_PROMPT},
+            {"role": "user",   "content": repair_prompt},
+        ],
+    )
+    return response["message"]["content"]
+
+async def call_llm_change_description(ontology_patch_text: str, model: str = LLAMA_MODEL) -> str:
+    """
+    Sendet den Ontologie-Patch an das LLM, welches die Änderungen in natürlicher Sprache beschreiben soll.
+    """
+    repair_prompt = (
+        "The following ontology patch is added to the base ontology.\n"
+        "Describe the changes with natural language in german.\n\n"
+        f"{ontology_patch_text}\n\n"
+    )
+    response = chat(
+        model,
+        messages=[
+            {"role": "system", "content": RESULT_DESCRIPTION_SYSTEM_PROMPT},
             {"role": "user",   "content": repair_prompt},
         ],
     )

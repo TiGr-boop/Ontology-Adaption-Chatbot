@@ -61,4 +61,4 @@ async def create_final_ontology(ontology_patch: Graph) -> Graph:
         f"{len(removed_triples)} Triples entfernt."
     )
 
-    return final_onto
+    return final_onto, added_triples, removed_triples
