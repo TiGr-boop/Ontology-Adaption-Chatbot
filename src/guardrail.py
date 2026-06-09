@@ -51,6 +51,7 @@ def preprocess_llm_response(llm_response: str) -> str:
         logger.debug("Markdown-Fence entfernt.")
     else:
         turtle_str = llm_response.strip()
+        logger.warning("Keine Markdown-fences gefunden. Rohe LLM-Response wird genutzt.")
 
     # 2. Fehlende spitze Klammern um URIs in @prefix-Zeilen ergänzen
     turtle_str = re.sub(
@@ -66,14 +67,6 @@ def preprocess_llm_response(llm_response: str) -> str:
         if prefix not in defined_pres:
             added_pres.append(f"@prefix {prefix}: <{uri}> .")
             logger.debug("Präfix hinzugefügt: %s", prefix)
-
-    # 4. Fehlendes ex-Präfix
-    # TO-DO: am besten in System-prompt
-    if "ex" not in defined_pres and re.search(r"\bex:", turtle_str):
-        added_pres.append(f"@prefix ex: <{ONTOLOGY_NAMESPACE}> .")
-
-    if added_pres:
-        turtle_str = "\n".join(added_pres) + "\n\n" + turtle_str
 
     return turtle_str
 

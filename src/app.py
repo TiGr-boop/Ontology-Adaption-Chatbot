@@ -2,7 +2,7 @@ import chainlit as cl
 from chainlit import server as chainlit_server
 from config import ONTOLOGY_PATH, LLAMA_MODEL, MAX_REPAIR_ATTEMPTS, FINAL_ONTOLOGY_PATH
 from RAG_retrieval import retrieve
-from llm import build_llm_prompt, call_llm, call_llm_repair, call_llm_change_description
+from llm import build_llm_prompt, call_llm, call_llm_repair, call_llm_change_description, call_llm_reasoning_repair
 from guardrail import preprocess_llm_response, check_syntax
 from final_onto import create_final_ontology
 import logging
@@ -11,8 +11,6 @@ from owlready2 import sync_reasoner_hermit, OwlReadyInconsistentOntologyError, g
 
 logger = logging.getLogger("ODD-RAG")
 
-
-CHOSEN_REASONER = "TO BE DEFINED"
 
 ### CHAINLIT GUI
 
@@ -27,8 +25,7 @@ async def on_start():
     await cl.Message(
         content=(
             f"Geladene Ontologie: `{ONTOLOGY_PATH}`\n"
-            f"Sprachmodell: `{LLAMA_MODEL}`\n"
-            f"Reasoner: '{CHOSEN_REASONER}'\n\n"
+            f"Sprachmodell: `{LLAMA_MODEL}`\n\n"
             "Beschreibe ein Szenario, an das die ODD angepasst werden soll."
         )
     ).send()
@@ -66,12 +63,6 @@ async def main(message: cl.Message):
     logger.info("Prompt created.")
 
     llm_response = await call_llm(prompt)
-    llm_message = cl.Message(content=(
-        "--- RAW LLM RESPONSE ---"
-        f"{llm_response}"
-        )
-    )
-    await llm_message.send()
 
     logger.info("Received response from LLM.")
 
@@ -115,17 +106,7 @@ async def main(message: cl.Message):
         await error_message.send()
 
         return
-
-
-    final_rdf_block_message = cl.Message(
-        content=(
-            "--- FINAL RDF BLOCK ---\n\n"
-            f"{onto_patch}"
-        )
-    )
-    await final_rdf_block_message.send()
-    
-
+  
 
 
     ### Step 4: FINAL ONTOLOGY ###
@@ -162,25 +143,56 @@ async def main(message: cl.Message):
 
     final_onto = get_ontology(str(FINAL_ONTOLOGY_PATH)).load()
 
-    try:
-        with final_onto:
-            await to_thread(sync_reasoner_hermit, infer_property_values=False)
-        logger.info("Reasoning erfolgreich.")
-        reasoning_message = cl.Message("Reasoning erfolgreich.")
-    except OwlReadyInconsistentOntologyError as e:
-        logger.warning(
-            "Resoning fehlgeschlagen. Ontologie ist inkonsistent\n"
-            f"{e}"
-            )
-        reasoning_message = cl.Message(
-            "Reasoning fehlgeschlagen. Ontologie ist inkonsistent."
-            f"{e}"
-        )
-    except Exception as e:
-        logger.error(f"HermiT-Fehler: {e}")
-        reasoning_message = cl.Message(
-            "HermiT-Fehler."
-            f"{e}"
-        )
+    reasoning_valid = False
+    reasoning_error = ""
 
-    await reasoning_message.send()
+    for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
+
+        try:
+            with final_onto:
+                await to_thread(sync_reasoner_hermit, infer_property_values=False)
+            logger.info("Reasoning erfolgreich.")
+            reasoning_message = cl.Message("Reasoning erfolgreich.")
+            await reasoning_message.send()
+            reasoning_valid = True
+
+        except OwlReadyInconsistentOntologyError as e:
+            reasoning_error = str(e)
+            logger.warning(f"Reasoning fehlgeschlagen (Versuch {attempt}): {reasoning_error}")
+
+            if attempt >= MAX_REPAIR_ATTEMPTS:
+                break
+
+            reasoning_message = cl.Message(
+                f"Ontologie inkonsistent: Repair Versuch {attempt} / {MAX_REPAIR_ATTEMPTS}."
+                f"Fehlermeldung:\n{reasoning_error}"
+            )
+
+            await reasoning_message.send()
+
+            llm_response = await call_llm_reasoning_repair(
+                broken_turtle=onto_patch,
+                error_text=reasoning_error,
+            )
+
+            onto_patch = preprocess_llm_response(llm_response=llm_response)
+
+            syntax_valid, error_list, graph, _ = await check_syntax(onto_patch)
+            if not syntax_valid:
+                check_message = "Repair erzeugte Syntaxfehler."
+                error_text = "\n".join(f"- {err}" for err in error_list)
+                check_message = cl.Message(check_message.join(error_text))
+                await cl.Message(check_message).send()
+                break
+            
+            final_ontology, _, _ = await create_final_ontology(graph)
+            final_ontology.serialize(destination=FINAL_ONTOLOGY_PATH, format="xml")
+
+        except Exception as e:
+            logger.error(f"HermiT-Fehler: {e}")
+            reasoning_message = (f"HermiT-Fehler.\n{e}")
+            await reasoning_message.send()
+
+    if not reasoning_valid:
+        reasoning_error_message = cl.Message(f"Reasoning nach {MAX_REPAIR_ATTEMPTS} Versuchen fehlgeschlagen.\n{reasoning_error}")
+        await reasoning_error_message.send()
