@@ -2,7 +2,14 @@ import chainlit as cl
 from chainlit import server as chainlit_server
 from config import ONTOLOGY_PATH, LLAMA_MODEL, MAX_REPAIR_ATTEMPTS, FINAL_ONTOLOGY_PATH
 from RAG_retrieval import retrieve
-from llm import build_llm_prompt, call_llm, call_llm_repair, call_llm_change_description, call_llm_reasoning_repair
+from llm import (
+    build_llm_prompt,
+    call_llm,
+    call_llm_repair,
+    call_llm_change_description,
+    call_llm_reasoning_repair,
+    rewrite_scenario
+)
 from guardrail import preprocess_llm_response, check_syntax
 from final_onto import create_final_ontology
 import logging
@@ -49,24 +56,34 @@ async def main(message: cl.Message):
     await step_message.send()
 
     retrieved_chunks = retrieve(scenario)
-    retrieval_message = cl.Message(f"Retrieved {len(retrieved_chunks)} Chunks.")
+    chunk_text = "\n".join(f"- {chunk}" for chunk in retrieved_chunks)
+    retrieval_message = cl.Message(f"Retrieved Chunks:\n{chunk_text}")
     await retrieval_message.send()
 
+    ### STEP 1.2 QUERY REWRITING ###
 
+    step_message = cl.Message("Step 1/5: Query Rewriting")
+    await step_message.send()
+
+    rewritten_scenario = await rewrite_scenario(scenario, retrieved_chunks)
+
+    scenario_message = cl.Message(rewritten_scenario)
+    await scenario_message.send()
+    
 
     ### STEP 2: LLM RESPONSE ###
 
     step_message = cl.Message("Step 2/5: LLM generates a new Ontology Patch.")
     await step_message.send()
 
-    prompt = build_llm_prompt(scenario, retrieved_chunks)
+    prompt = build_llm_prompt(rewritten_scenario, retrieved_chunks)
     logger.info("Prompt created.")
 
     llm_response = await call_llm(prompt)
 
-    logger.info("Received response from LLM.")
+    logger.info(f"Received response from LLM.\n{llm_response}")
 
-    llm_response_message = cl.Message(f"Das ist die rohe Antwort des LLM:\n{llm_response}")
+    llm_response_message = cl.Message(f"Das ist die rohe Antwort des LLM:\n{str(llm_response)}")
     await llm_response_message.send()
 
 
@@ -79,6 +96,10 @@ async def main(message: cl.Message):
     # Erste Syntax-Prüfung
 
     cleaned_llm_response = preprocess_llm_response(llm_response=llm_response)
+    llm_response_message = cl.Message(f"Das ist die finale Antwort des LLMs:\n{cleaned_llm_response}")
+    await llm_response_message.send()
+
+    logger.info(f"Cleaned LLM-Response:\n{cleaned_llm_response}")
     syntax_valid, error_list, graph, fmt = await check_syntax(cleaned_llm_response)
     error_text = "\n".join(f"- {err}" for err in error_list)
 

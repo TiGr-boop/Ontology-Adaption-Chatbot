@@ -1,7 +1,17 @@
-from config import SYSTEM_PROMPT, LLAMA_MODEL, REPAIR_SYSTEM_PROMPT, RESULT_DESCRIPTION_SYSTEM_PROMPT, CONSISTENCY_SYSTEM_PROMPT
+from config import (
+    SYSTEM_PROMPT,
+    LLAMA_MODEL,
+    REPAIR_SYSTEM_PROMPT,
+    RESULT_DESCRIPTION_SYSTEM_PROMPT,
+    CONSISTENCY_SYSTEM_PROMPT,
+    REWRITE_PROMPT
+)
 from ollama import chat
 from asyncio import to_thread
 import chainlit as cl
+import logging
+
+logger = logging.getLogger(__file__)
 
 def build_llm_prompt(
         user_input: str,
@@ -60,14 +70,8 @@ async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLAM
         f"{error_text}\n\n"
         "Fix all syntax errors and return only the corrected Turtle block."
     )
-    response = chat(
-        model,
-        messages=[
-            {"role": "system", "content": REPAIR_SYSTEM_PROMPT},
-            {"role": "user",   "content": repair_prompt},
-        ],
-    )
-    return response["message"]["content"]
+    response = await call_llm(repair_prompt, system_prompt=REPAIR_SYSTEM_PROMPT)
+    return response
 
 async def call_llm_reasoning_repair(broken_turtle: str, error_text: str, model: str = LLAMA_MODEL) -> str:
     repair_prompt = (
@@ -77,32 +81,34 @@ async def call_llm_reasoning_repair(broken_turtle: str, error_text: str, model: 
         f"{error_text}"
         "Fix the patch so the ontology becomes consistent. Return ONLY valid Turtle syntax in a ```turtle ... ``` block."
     )
-
-    response = chat(
-        model,
-        messages=[
-            {"role": "system", "content": CONSISTENCY_SYSTEM_PROMPT},
-            {"role": "user",   "content": repair_prompt},
-        ],
-    )
-    return response["message"]["content"]
+    response = await call_llm(prompt=repair_prompt, system_prompt=CONSISTENCY_SYSTEM_PROMPT)
+    return response
 
 async def call_llm_change_description(ontology_patch_text: str, model: str = LLAMA_MODEL) -> str:
     """
     Sendet den Ontologie-Patch an das LLM, welches die Änderungen in natürlicher Sprache beschreiben soll.
     """
-    repair_prompt = (
+    prompt = (
         "The following ontology patch is added to the base ontology.\n"
         "Describe the changes with natural language in german.\n\n"
         f"{ontology_patch_text}\n\n"
     )
-    response = chat(
-        model,
-        messages=[
-            {"role": "system", "content": RESULT_DESCRIPTION_SYSTEM_PROMPT},
-            {"role": "user",   "content": repair_prompt},
-        ],
-    )
-    return response["message"]["content"]
-
     
+    response = await call_llm(prompt=prompt, system_prompt=RESULT_DESCRIPTION_SYSTEM_PROMPT)
+
+    return response
+
+async def rewrite_scenario(scenario: str, chunks: list) -> str:
+    existing_entities = "\n".join(f"- {c['label']} (Typ: {c['entity_type']})" for c in chunks)
+    chunk_text = "\n\n".join(c["text"] for c in chunks)
+
+    prompt = REWRITE_PROMPT + f"""
+        EXISTING ENTITIES (already in ontology, do NOT recreate these):
+        {existing_entities}
+
+        FULL CHUNK DETAILS:
+        {chunk_text}"""
+    
+    requirements = await call_llm(prompt=scenario, system_prompt=prompt)
+    logger.info(f"Rewritten requirements:\n{requirements}")
+    return requirements
