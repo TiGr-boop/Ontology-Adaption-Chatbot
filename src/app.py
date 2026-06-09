@@ -66,6 +66,9 @@ async def main(message: cl.Message):
 
     logger.info("Received response from LLM.")
 
+    llm_response_message = cl.Message(f"Das ist die rohe Antwort des LLM:\n{llm_response}")
+    await llm_response_message.send()
+
 
 
     ### STEP 3: GUARD RAIL LAYER ###
@@ -88,10 +91,12 @@ async def main(message: cl.Message):
             
         await cl.Message(f"Syntax ungültig: Repair-Versuch {attempt} / {MAX_REPAIR_ATTEMPTS}").send()
 
-        onto_patch = await call_llm_repair(
+        llm_response = await call_llm_repair(
             broken_turtle=cleaned_llm_response,
             error_text=error_text,
         )
+
+        onto_patch = preprocess_llm_response(llm_response=llm_response)
 
         syntax_valid, error_list, graph, fmt = await check_syntax(onto_patch)
         error_text = "\n".join(f"- {err}" for err in error_list)
@@ -114,7 +119,7 @@ async def main(message: cl.Message):
     step_message = cl.Message("Step 4/5: Erstellung der finalen Ontologie.")
     await step_message.send()
 
-    final_ontology, _, _ = await create_final_ontology(graph)
+    final_ontology = await create_final_ontology(graph)
     logger.info("Finale Ontologie wurde erstellt.")
 
     # Speichern der Ontologie 
@@ -155,6 +160,7 @@ async def main(message: cl.Message):
             reasoning_message = cl.Message("Reasoning erfolgreich.")
             await reasoning_message.send()
             reasoning_valid = True
+            break
 
         except OwlReadyInconsistentOntologyError as e:
             reasoning_error = str(e)
@@ -185,7 +191,7 @@ async def main(message: cl.Message):
                 await cl.Message(check_message).send()
                 break
             
-            final_ontology, _, _ = await create_final_ontology(graph)
+            final_ontology = await create_final_ontology(graph)
             final_ontology.serialize(destination=FINAL_ONTOLOGY_PATH, format="xml")
 
         except Exception as e:

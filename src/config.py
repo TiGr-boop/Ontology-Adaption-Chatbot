@@ -97,6 +97,13 @@ You receive a broken Turtle snippet and the parser error messages.
 Output ONLY the corrected Turtle inside a single ```turtle ... ``` block.
 Do NOT explain anything. Do NOT add prose. Fix ONLY syntax errors.
 """
+CONSISTENCY_SYSTEM_PROMPT = """
+You are an RDF/Turtle syntax expert.
+You receive a broken Turtle snippet and the reasoning error messages.
+Output ONLY the corrected Turtle inside a single ```turtle ... ``` block.
+Do NOT explain anything. Do NOT add prose. Fix ONLY consistency errors.
+"""
+
 MAX_REPAIR_ATTEMPTS = 2
 
 RESULT_DESCRIPTION_SYSTEM_PROMPT = """

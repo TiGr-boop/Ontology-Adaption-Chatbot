@@ -1,4 +1,4 @@
-from config import SYSTEM_PROMPT, LLAMA_MODEL, REPAIR_SYSTEM_PROMPT, RESULT_DESCRIPTION_SYSTEM_PROMPT
+from config import SYSTEM_PROMPT, LLAMA_MODEL, REPAIR_SYSTEM_PROMPT, RESULT_DESCRIPTION_SYSTEM_PROMPT, CONSISTENCY_SYSTEM_PROMPT
 from ollama import chat
 from asyncio import to_thread
 import chainlit as cl
@@ -69,15 +69,23 @@ async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLAM
     )
     return response["message"]["content"]
 
-async def call_llm_reasoning_repair(broken_turtle: str, error_text: str) -> str:
-    repair_prompt = f"""The following OWL/Turtle patch caused an inconsistency during reasoning:\n\n
-    {broken_turtle}
-    Reasoner error:
-    {error_text}
-    Fix the patch so the ontology becomes consistent. Return ONLY valid Turtle syntax in a ```turtle ... ``` block.
-    """
+async def call_llm_reasoning_repair(broken_turtle: str, error_text: str, model: str = LLAMA_MODEL) -> str:
+    repair_prompt = (
+        "The following OWL/Turtle patch caused an inconsistency during reasoning:\n\n"
+        f"{broken_turtle}"
+        "Reasoner error:"
+        f"{error_text}"
+        "Fix the patch so the ontology becomes consistent. Return ONLY valid Turtle syntax in a ```turtle ... ``` block."
+    )
 
-    return await call_llm(repair_prompt, system_prompt=SYSTEM_PROMPT)
+    response = chat(
+        model,
+        messages=[
+            {"role": "system", "content": CONSISTENCY_SYSTEM_PROMPT},
+            {"role": "user",   "content": repair_prompt},
+        ],
+    )
+    return response["message"]["content"]
 
 async def call_llm_change_description(ontology_patch_text: str, model: str = LLAMA_MODEL) -> str:
     """
