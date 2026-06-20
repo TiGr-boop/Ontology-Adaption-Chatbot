@@ -5,6 +5,8 @@ import webbrowser
 import time
 from src.config import ONTOLOGY_DIR, ONTOLOGY_PATH, REWRITE_PROMPT, ONTOLOGY_NAMESPACE
 from rdflib import Graph, URIRef
+import asyncio
+import chainlit as cl
 
 logger = logging.getLogger("ODD-RAG")
 
@@ -80,4 +82,3 @@ def chunk_ontology(graph: rdflib.Graph,
 
     logger.info("Chunking abgeschlossen: %d Entitäts-Chunks erzeugt.", len(chunks))
     return chunks
-

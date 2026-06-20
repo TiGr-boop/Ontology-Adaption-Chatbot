@@ -13,10 +13,23 @@ from llm import (
 from guardrail import preprocess_llm_response, check_syntax
 from final_onto import create_final_ontology
 import logging
-from asyncio import to_thread
+from asyncio import to_thread, sleep
 from owlready2 import sync_reasoner_hermit, OwlReadyInconsistentOntologyError, get_ontology
 
 logger = logging.getLogger("ODD-RAG")
+
+async def stream_text(text: str, delay: float = 0.01):
+    msg = cl.Message(content="")
+    await msg.send()
+    
+    for char in text:
+        await msg.stream_token(char)
+        await sleep(delay)
+    
+    await msg.update()
+    return msg
+
+
 
 
 ### CHAINLIT GUI
@@ -42,39 +55,46 @@ async def on_start():
 async def main(message: cl.Message):
     """
     STEP 1: RAG-RETRIEVAL of relevant ontology chunks
-    STEP 2: Generating an Ontology Patch (LLM RESPONSE)
-    STEP 3: GUARD RAIL LAYER (Syntax-Prüfung)
-    STEP 4: Zusammensetzen der Ontologie (FINAL ONTOLOGY)
-    STEP 5: Reasoner
+    STEP 2: QUERY REWRITING
+    STEP 3: Generating an Ontology Patch (LLM RESPONSE)
+    STEP 4: GUARD RAIL LAYER (Syntax-Prüfung)
+    STEP 5: Zusammensetzen der Ontologie (FINAL ONTOLOGY)
+    STEP 6: Reasoner
     """
 
     scenario = message.content
 
     ### STEP 1: RAG RETRIEVAL ###
 
-    step_message = cl.Message("Step 1/5: Retrieving corresponding chunks from Ontology.")
-    await step_message.send()
+    step_message = "Step 1/6: Retrieving corresponding chunks from Ontology."
+    await stream_text(step_message)
 
     retrieved_chunks = retrieve(scenario)
     chunk_text = "\n".join(f"- {chunk}" for chunk in retrieved_chunks)
-    retrieval_message = cl.Message(f"Retrieved Chunks:\n{chunk_text}")
-    await retrieval_message.send()
+    retrieval_message = (f"Retrieved Chunks:\n{chunk_text}")
+    await stream_text(retrieval_message)
 
-    ### STEP 1.2 QUERY REWRITING ###
 
-    step_message = cl.Message("Step 1/5: Query Rewriting")
-    await step_message.send()
+
+    ### STEP 2 QUERY REWRITING ###
+
+    step_message = (
+        "Step 2/6: Query Rewriting\n"
+        "Rewrites the Query based on the scenario and the retrieved chunks.\n"
+        "Afterwards another retrieval process is initiated based on the rewritten Query"
+        )
+    await stream_text(step_message)
 
     rewritten_scenario = await rewrite_scenario(scenario, retrieved_chunks)
 
-    scenario_message = cl.Message(rewritten_scenario)
-    await scenario_message.send()
-    
+    retrieved_chunks = retrieve(rewritten_scenario)
 
-    ### STEP 2: LLM RESPONSE ###
 
-    step_message = cl.Message("Step 2/5: LLM generates a new Ontology Patch.")
-    await step_message.send()
+
+    ### STEP 3: LLM RESPONSE ###
+
+    step_message = ("Step 3/6: LLM generates a new Ontology Patch.")
+    await stream_text(step_message)
 
     prompt = build_llm_prompt(rewritten_scenario, retrieved_chunks)
     logger.info("Prompt created.")
@@ -83,21 +103,22 @@ async def main(message: cl.Message):
 
     logger.info(f"Received response from LLM.\n{llm_response}")
 
-    llm_response_message = cl.Message(f"Das ist die rohe Antwort des LLM:\n{str(llm_response)}")
-    await llm_response_message.send()
 
 
+    ### STEP 4: GUARD RAIL LAYER ###
 
-    ### STEP 3: GUARD RAIL LAYER ###
-
-    step_message = cl.Message("Step 3/5: Syntax-Überprüfung.")
-    await step_message.send()
+    step_message = ("Step 4/6: Syntax-Überprüfung.")
+    await stream_text(step_message)
 
     # Erste Syntax-Prüfung
 
     cleaned_llm_response = preprocess_llm_response(llm_response=llm_response)
-    llm_response_message = cl.Message(f"Das ist die finale Antwort des LLMs:\n{cleaned_llm_response}")
-    await llm_response_message.send()
+    llm_response_message = (
+        f"Das ist die Antwort des LLMs:\n"
+        "```turtle\n"
+        f"{cleaned_llm_response}\n"
+        "```")
+    await stream_text(llm_response_message)
 
     logger.info(f"Cleaned LLM-Response:\n{cleaned_llm_response}")
     syntax_valid, error_list, graph, fmt = await check_syntax(cleaned_llm_response)
@@ -110,7 +131,7 @@ async def main(message: cl.Message):
         if syntax_valid:
             break
             
-        await cl.Message(f"Syntax ungültig: Repair-Versuch {attempt} / {MAX_REPAIR_ATTEMPTS}").send()
+        await stream_text(f"Syntax ungültig: Repair-Versuch {attempt} / {MAX_REPAIR_ATTEMPTS}")
 
         llm_response = await call_llm_repair(
             broken_turtle=cleaned_llm_response,
@@ -122,8 +143,7 @@ async def main(message: cl.Message):
         syntax_valid, error_list, graph, fmt = await check_syntax(onto_patch)
         error_text = "\n".join(f"- {err}" for err in error_list)
 
-    check_message = cl.Message(f"Syntax check: {syntax_valid}")
-    await check_message.send()
+    await stream_text(f"Syntax check: {syntax_valid}")
 
     # Bestätigung in Chainlit
 
@@ -135,10 +155,9 @@ async def main(message: cl.Message):
   
 
 
-    ### Step 4: FINAL ONTOLOGY ###
+    ### Step 5: FINAL ONTOLOGY ###
 
-    step_message = cl.Message("Step 4/5: Erstellung der finalen Ontologie.")
-    await step_message.send()
+    await stream_text("Step 5/6: Erstellung der finalen Ontologie.")
 
     final_ontology = await create_final_ontology(graph)
     logger.info("Finale Ontologie wurde erstellt.")
@@ -150,22 +169,21 @@ async def main(message: cl.Message):
         format="xml"
     )
 
-    description_message = await call_llm_change_description(onto_patch)
+    await call_llm_change_description(onto_patch)
 
 
-    final_message = cl.Message(
+    final_message = (
         "Finale Ontologie gespeichert unter:\n"
         f"{FINAL_ONTOLOGY_PATH}\n\n"
-        f"{description_message}"
     )
-    await final_message.send()
+    await stream_text(final_message)
 
 
 
-    ### STEP 5: REASONER ####
+    ### STEP 6: REASONER ####
 
-    step_message = cl.Message("Step 5/5: Reasoning.")
-    await step_message.send()
+    step_message = ("Step 6/6: Reasoning.")
+    await stream_text(step_message)
 
     final_onto = get_ontology(str(FINAL_ONTOLOGY_PATH)).load()
 
@@ -178,8 +196,8 @@ async def main(message: cl.Message):
             with final_onto:
                 await to_thread(sync_reasoner_hermit, infer_property_values=False)
             logger.info("Reasoning erfolgreich.")
-            reasoning_message = cl.Message("Reasoning erfolgreich.")
-            await reasoning_message.send()
+            reasoning_message = "Reasoning erfolgreich."
+            await stream_text(reasoning_message)
             reasoning_valid = True
             break
 
@@ -190,12 +208,12 @@ async def main(message: cl.Message):
             if attempt >= MAX_REPAIR_ATTEMPTS:
                 break
 
-            reasoning_message = cl.Message(
+            reasoning_message = (
                 f"Ontologie inkonsistent: Repair Versuch {attempt} / {MAX_REPAIR_ATTEMPTS}."
                 f"Fehlermeldung:\n{reasoning_error}"
             )
 
-            await reasoning_message.send()
+            await stream_text(reasoning_message)
 
             llm_response = await call_llm_reasoning_repair(
                 broken_turtle=onto_patch,
@@ -208,8 +226,8 @@ async def main(message: cl.Message):
             if not syntax_valid:
                 check_message = "Repair erzeugte Syntaxfehler."
                 error_text = "\n".join(f"- {err}" for err in error_list)
-                check_message = cl.Message(check_message.join(error_text))
-                await cl.Message(check_message).send()
+                check_message = (check_message.join(error_text))
+                await stream_text(check_message)
                 break
             
             final_ontology = await create_final_ontology(graph)
@@ -218,8 +236,8 @@ async def main(message: cl.Message):
         except Exception as e:
             logger.error(f"HermiT-Fehler: {e}")
             reasoning_message = (f"HermiT-Fehler.\n{e}")
-            await reasoning_message.send()
+            await stream_text(reasoning_message)
 
     if not reasoning_valid:
-        reasoning_error_message = cl.Message(f"Reasoning nach {MAX_REPAIR_ATTEMPTS} Versuchen fehlgeschlagen.\n{reasoning_error}")
-        await reasoning_error_message.send()
+        reasoning_error_message = (f"Reasoning nach {MAX_REPAIR_ATTEMPTS} Versuchen fehlgeschlagen.\n{reasoning_error}")
+        await stream_text(reasoning_error_message)

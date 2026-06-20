@@ -48,15 +48,31 @@ async def call_llm(prompt: str, system_prompt: str = SYSTEM_PROMPT, model: str =
         system_prompt (Str): Anweisungen an das System (z.B. konkrete Aufgabe und Regeln)
         model (Str): Name des verwendeten Llama-Models.
     """
-    response = await to_thread(
-        chat,
-        model,
-        messages=[
-            {'role': 'system', 'content': system_prompt},
-            {'role': 'user', 'content': prompt}
-        ]
-    )
-    return response['message']['content']
+
+    msg = cl.Message(content="")
+    await msg.send()
+
+    full_response = ""
+
+    def stream_sync():
+        return chat(
+            model,
+            messages=[
+                {'role': 'system', 'content': system_prompt},
+                {'role': 'user', 'content': prompt}
+            ],
+            stream = True
+        )
+    
+    stream = await to_thread(stream_sync)
+
+    for chunk in stream:
+        token = chunk['message']['content']
+        full_response += token
+        await msg.stream_token(token)
+
+    await msg.update()
+    return full_response
 
 async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLAMA_MODEL) -> str:
     """
@@ -94,9 +110,8 @@ async def call_llm_change_description(ontology_patch_text: str, model: str = LLA
         f"{ontology_patch_text}\n\n"
     )
     
-    response = await call_llm(prompt=prompt, system_prompt=RESULT_DESCRIPTION_SYSTEM_PROMPT)
+    await call_llm(prompt=prompt, system_prompt=RESULT_DESCRIPTION_SYSTEM_PROMPT)
 
-    return response
 
 async def rewrite_scenario(scenario: str, chunks: list) -> str:
     existing_entities = "\n".join(f"- {c['label']} (Typ: {c['entity_type']})" for c in chunks)
