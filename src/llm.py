@@ -1,17 +1,28 @@
 from config import (
     SYSTEM_PROMPT,
-    LLAMA_MODEL,
+    LLM_MODEL,
     REPAIR_SYSTEM_PROMPT,
     RESULT_DESCRIPTION_SYSTEM_PROMPT,
     CONSISTENCY_SYSTEM_PROMPT,
-    REWRITE_PROMPT
+    REWRITE_PROMPT,
+    OPENAI_API_KEY
 )
 from ollama import chat
+from openai import AsyncOpenAI
 from asyncio import to_thread
 import chainlit as cl
 import logging
 
 logger = logging.getLogger(__file__)
+
+if OPENAI_API_KEY != "":
+    openai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
+
+OPENAI_MODEL_PREFIXES = ("gpt-", "o1-", "o3-", "o4-")
+
+def is_openai_model(model = LLM_MODEL) -> bool:
+    return model.startswith(OPENAI_MODEL_PREFIXES)
+
 
 def build_llm_prompt(
         user_input: str,
@@ -39,19 +50,7 @@ def build_llm_prompt(
 
     return final_prompt
 
-async def call_llm(prompt: str, system_prompt: str = SYSTEM_PROMPT, model: str = LLAMA_MODEL) -> str:
-    """
-    Sendet das Prompt an das LLM und gibt Antwort zurück.
-    Das Prompt wird zuvor in einen json Body gepackt.
-    Args:
-        prompt (Str): Prompt, das an das LLM gesendet werden soll.
-        system_prompt (Str): Anweisungen an das System (z.B. konkrete Aufgabe und Regeln)
-        model (Str): Name des verwendeten Llama-Models.
-    """
-
-    msg = cl.Message(content="")
-    await msg.send()
-
+async def _stream_ollama(prompt: str, system_prompt: str, model: str, msg: cl.Message) -> str:
     full_response = ""
 
     def stream_sync():
@@ -61,9 +60,9 @@ async def call_llm(prompt: str, system_prompt: str = SYSTEM_PROMPT, model: str =
                 {'role': 'system', 'content': system_prompt},
                 {'role': 'user', 'content': prompt}
             ],
-            stream = True
+            stream=True
         )
-    
+
     stream = await to_thread(stream_sync)
 
     for chunk in stream:
@@ -71,10 +70,54 @@ async def call_llm(prompt: str, system_prompt: str = SYSTEM_PROMPT, model: str =
         full_response += token
         await msg.stream_token(token)
 
+    return full_response
+
+
+async def _stream_openai(prompt: str, system_prompt: str, model: str, msg: cl.Message) -> str:
+    full_response = ""
+
+    stream = await openai_client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": prompt}
+        ],
+        stream=True
+    )
+
+    async for chunk in stream:
+        token = chunk.choices[0].delta.content or ""
+        full_response += token
+        await msg.stream_token(token)
+
+    return full_response
+
+
+async def call_llm(prompt: str, system_prompt: str = SYSTEM_PROMPT, model: str = LLM_MODEL) -> str:
+    """
+    Sendet das Prompt an das LLM und gibt Antwort zurück.
+    Wählt automatisch zwischen Ollama und OpenAI basierend auf dem Modellnamen.
+    Args:
+        prompt (Str): Prompt, das an das LLM gesendet werden soll.
+        system_prompt (Str): Anweisungen an das System (z.B. konkrete Aufgabe und Regeln)
+        model (Str): Name des verwendeten Modells (z.B. 'llama3:8b' oder 'gpt-4o').
+    """
+
+    assert not is_openai_model(model=LLM_MODEL) or OPENAI_API_KEY, \
+        "Es wurde ein OpenAI-Modell gewählt, aber kein API-Key zur Verfügung gestellt"
+    
+    msg = cl.Message(content="")
+    await msg.send()
+
+    if is_openai_model(model):
+        full_response = await _stream_openai(prompt, system_prompt, model, msg)
+    else:
+        full_response = await _stream_ollama(prompt, system_prompt, model, msg)
+
     await msg.update()
     return full_response
 
-async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLAMA_MODEL) -> str:
+async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLM_MODEL) -> str:
     """
     Sendet falsche Turtle-Serialisierung + Fehlermeldungen ans LLM zur Korrektur.
     Wird aufgerufen wenn check_syntax() fehlschlägt.
@@ -89,7 +132,7 @@ async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLAM
     response = await call_llm(repair_prompt, system_prompt=REPAIR_SYSTEM_PROMPT)
     return response
 
-async def call_llm_reasoning_repair(broken_turtle: str, error_text: str, model: str = LLAMA_MODEL) -> str:
+async def call_llm_reasoning_repair(broken_turtle: str, error_text: str, model: str = LLM_MODEL) -> str:
     repair_prompt = (
         "The following OWL/Turtle patch caused an inconsistency during reasoning:\n\n"
         f"{broken_turtle}"
@@ -100,7 +143,7 @@ async def call_llm_reasoning_repair(broken_turtle: str, error_text: str, model: 
     response = await call_llm(prompt=repair_prompt, system_prompt=CONSISTENCY_SYSTEM_PROMPT)
     return response
 
-async def call_llm_change_description(ontology_patch_text: str, model: str = LLAMA_MODEL) -> str:
+async def call_llm_change_description(ontology_patch_text: str, model: str = LLM_MODEL) -> str:
     """
     Sendet den Ontologie-Patch an das LLM, welches die Änderungen in natürlicher Sprache beschreiben soll.
     """

@@ -16,7 +16,10 @@ STANDARD_PREFIXES = {
 }
 
 # LLM Config
-LLAMA_MODEL = 'llama3:8B' #'codellama:7b'     #'llama3.2:1b' zu klein
+LLM_MODEL = 'llama3:8B' #'codellama:7b'     #'llama3.2:1b' zu klein
+OPENAI_API_KEY = ""
+
+
 
 SYSTEM_PROMPT = f"""1. Respond ONLY with valid Turtle syntax inside a single ```turtle ... ``` code block.
 2. Do NOT output explanations, markdown text, or prose outside the Turtle block.
