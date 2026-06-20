@@ -1,6 +1,6 @@
 import chainlit as cl
 from chainlit import server as chainlit_server
-from config import ONTOLOGY_PATH, LLAMA_MODEL, MAX_REPAIR_ATTEMPTS, FINAL_ONTOLOGY_PATH
+from config import ONTOLOGY_PATH, LLM_MODEL, MAX_REPAIR_ATTEMPTS, FINAL_ONTOLOGY_PATH, REPAIR_MODEL
 from RAG_retrieval import retrieve
 from llm import (
     build_llm_prompt,
@@ -45,7 +45,7 @@ async def on_start():
     await cl.Message(
         content=(
             f"Geladene Ontologie: `{ONTOLOGY_PATH}`\n"
-            f"Sprachmodell: `{LLAMA_MODEL}`\n\n"
+            f"Sprachmodell: `{LLM_MODEL}`\n\n"
             "Beschreibe ein Szenario, an das die ODD angepasst werden soll."
         )
     ).send()
@@ -70,8 +70,8 @@ async def main(message: cl.Message):
     await stream_text(step_message)
 
     retrieved_chunks = retrieve(scenario)
-    chunk_text = "\n".join(f"- {chunk}" for chunk in retrieved_chunks)
-    retrieval_message = (f"Retrieved Chunks:\n{chunk_text}")
+    chunk_text = "\n".join(f"- {chunk['text']}" for chunk in retrieved_chunks)
+    retrieval_message = (f"Gefundenen Entitäten (Chunks):\n{chunk_text}")
     await stream_text(retrieval_message)
 
 
@@ -99,7 +99,7 @@ async def main(message: cl.Message):
     prompt = build_llm_prompt(rewritten_scenario, retrieved_chunks)
     logger.info("Prompt created.")
 
-    llm_response = await call_llm(prompt)
+    llm_response = await call_llm(prompt, model=REPAIR_MODEL)
 
     logger.info(f"Received response from LLM.\n{llm_response}")
 

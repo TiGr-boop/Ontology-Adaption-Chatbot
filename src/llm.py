@@ -1,6 +1,7 @@
 from config import (
     SYSTEM_PROMPT,
     LLM_MODEL,
+    REPAIR_MODEL,
     REPAIR_SYSTEM_PROMPT,
     RESULT_DESCRIPTION_SYSTEM_PROMPT,
     CONSISTENCY_SYSTEM_PROMPT,
@@ -117,7 +118,7 @@ async def call_llm(prompt: str, system_prompt: str = SYSTEM_PROMPT, model: str =
     await msg.update()
     return full_response
 
-async def call_llm_repair(broken_turtle: str, error_text: str, model: str = LLM_MODEL) -> str:
+async def call_llm_repair(broken_turtle: str, error_text: str, model: str = REPAIR_MODEL) -> str:
     """
     Sendet falsche Turtle-Serialisierung + Fehlermeldungen ans LLM zur Korrektur.
     Wird aufgerufen wenn check_syntax() fehlschlägt.

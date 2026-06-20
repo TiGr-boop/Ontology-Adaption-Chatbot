@@ -1,4 +1,4 @@
-from config import SUPPORTED_FORMATS, STANDARD_PREFIXES, ONTOLOGY_NAMESPACE
+from config import SUPPORTED_FORMATS, STANDARD_PREFIXES
 from rdflib import Graph
 import logging
 import re
