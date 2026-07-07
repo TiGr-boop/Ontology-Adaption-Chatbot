@@ -1,9 +1,10 @@
-from sentence_transformers import SentenceTransformer
-from config import EMBEDDING_MODEL, CHROMA_COLLECTION_NAME, NUM_RETRIEVED_CHUNKS
+from config import EMBEDDING_MODEL, CHROMA_COLLECTION_NAME, NUM_RETRIEVED_CHUNKS_QR
+
 import logging
 import chromadb
+from sentence_transformers import SentenceTransformer
 
-def retrieve(prompt: str):
+def retrieve(prompt: str, num_chunks: int = NUM_RETRIEVED_CHUNKS_QR):
     """
     Gibt die semantisch ähnlichsten Chunks zurück basierend auf dem eingegebenen Prompt.
     Args:
@@ -26,7 +27,7 @@ def retrieve(prompt: str):
     
     retrieval_results = collection.query(
         query_embeddings=embedding,
-        n_results=NUM_RETRIEVED_CHUNKS,
+        n_results=num_chunks,
         include=["documents", "metadatas", "distances"]
     )
 

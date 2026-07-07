@@ -1,0 +1,12 @@
+chainlit
+logging
+pathlib
+rdflib
+sys
+sentence_transformers
+chromadb
+asyncio
+owlready2
+re
+ollama
+openai

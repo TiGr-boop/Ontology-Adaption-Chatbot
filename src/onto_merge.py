@@ -1,8 +1,10 @@
 from config import ONTOLOGY_PATH, FINAL_ONTOLOGY_PATH
+from functions import stream_text
+
 from rdflib import Graph, URIRef
 import logging
 
-logger = logging.getLogger("RAG-ODD")
+logger = logging.getLogger(__file__)
 
 def diff_between_ontos(base_onto: Graph, patch_onto: Graph) -> tuple[set, set]:
         """
@@ -62,3 +64,22 @@ async def create_final_ontology(ontology_patch: Graph) -> Graph:
     )
 
     return final_onto
+
+async def ontology_merge(ontology_graph: Graph, path_to_save_ontology = FINAL_ONTOLOGY_PATH ):
+    await stream_text("Step 4/5: ONTOLOGY MERGE")
+
+    final_ontology = await create_final_ontology(ontology_graph)
+    logger.info("Finale Ontologie wurde erstellt.")
+
+    # Speichern der Ontologie 
+
+    final_ontology.serialize(
+        destination=path_to_save_ontology,
+        format="xml"
+    )
+
+    final_message = (
+        "Final Ontology saved as:\n"
+        f"{path_to_save_ontology}\n\n"
+    )
+    await stream_text(final_message)

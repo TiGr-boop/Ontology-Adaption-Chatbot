@@ -1,12 +1,30 @@
 from pathlib import Path
 
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+### BASICS ###
+
+EMBEDDING_MODEL = "all-MiniLM-L12-v2"
+CHROMA_COLLECTION_NAME = "ODD_embeddings"
+LLM_MODEL = 'llama3:8B' #'gpt-5'     #'llama3.2:1b' zu klein
+REPAIR_MODEL = 'codellama:7b'#'gpt-5' 
+OPENAI_API_KEY = ""
+NUM_RETRIEVED_CHUNKS_QR = 10
+NUM_RETRIEVED_CHUNKS_CO = 4
+
+MAX_REPAIR_ATTEMPTS = 2
+
+
+
+### PATHS ###
+
 ONTOLOGY_PATH = Path("ontology.rdf")
 ONTOLOGY_DIR = Path(ONTOLOGY_PATH).parents[0]
 FINAL_ONTOLOGY_PATH = ONTOLOGY_DIR / "final_ontology.rdf"
+
+
+
+### FORMATTING OF THE ONTOLOGY PATCH ###
+
 ONTOLOGY_NAMESPACE = "http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#"
-CHROMA_COLLECTION_NAME = "ODD_embeddings"
-NUM_RETRIEVED_CHUNKS = 1
 SUPPORTED_FORMATS = ["turtle", "xml", "n3", "nt", "json-ld"]
 STANDARD_PREFIXES = {
     "owl":  "http://www.w3.org/2002/07/owl#",
@@ -14,14 +32,10 @@ STANDARD_PREFIXES = {
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "xsd":  "http://www.w3.org/2001/XMLSchema#",
 }
-MAX_REPAIR_ATTEMPTS = 2
-
-# LLM Config
-LLM_MODEL = 'llama3:8B'    #'llama3.2:1b' zu klein
-REPAIR_MODEL = 'codellama:7b'
-OPENAI_API_KEY = ""
 
 
+
+### PROMPTS ###
 
 SYSTEM_PROMPT = f"""1. Respond ONLY with valid Turtle syntax inside a single ```turtle ... ``` code block.
 2. Do NOT output explanations, markdown text, or prose outside the Turtle block.
@@ -58,12 +72,6 @@ You are an RDF/Turtle syntax expert.
 You receive a broken Turtle snippet and the reasoning error messages.
 Output ONLY the corrected Turtle inside a single ```turtle ... ``` block.
 Do NOT explain anything. Do NOT add prose. Fix ONLY consistency errors.
-"""
-
-RESULT_DESCRIPTION_SYSTEM_PROMPT = """
-You are an RDF/Turtle expert.
-You receive a Turtle patch. This patch will be added to a base ontology.
-Describe the Turtle patch and what it changes in the base ontology with natural language in german.
 """
 
 REWRITE_PROMPT = f"""You are an ontology requirements analyst for OWL-DL ontologies in the domain of autonomous hospital transport systems.

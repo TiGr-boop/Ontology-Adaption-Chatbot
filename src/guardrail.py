@@ -1,4 +1,7 @@
-from config import SUPPORTED_FORMATS, STANDARD_PREFIXES
+from config import SUPPORTED_FORMATS, STANDARD_PREFIXES, MAX_REPAIR_ATTEMPTS
+from functions import stream_text
+from llm import call_llm_repair
+
 from rdflib import Graph
 import logging
 import re
@@ -13,8 +16,10 @@ async def check_syntax(llm_response: str) -> tuple[bool, list, Graph, str]:
         llm-response (Str): Antwort des LLMs auf das Prompt. Die Antwort sollte lediglich einen RDF-Block beinhalten.
 
     Returns:
-        bool: Ergebnis des Parsings. True, wenn parsing funktioniert.
-        str: 
+        bool: Result of parsing. True, if parsing was successful.
+        list: list of errors in case parsing wasn't successfull
+        Graph: Parsed graph
+        Format: format of the parsed graph
     """
     error_list = []
 
@@ -70,3 +75,35 @@ def preprocess_llm_response(llm_response: str) -> str:
 
     return turtle_str
 
+
+async def guard_rail_layer(ontology_patch):
+    step_message = ("Step 3/5: GUARD RAIL LAYER")
+    await stream_text(step_message)
+
+    # First syntax Check
+
+    cleaned_llm_response = preprocess_llm_response(ontology_patch)
+    syntax_valid, error_list, graph, fmt = await check_syntax(cleaned_llm_response)
+    error_text = "\n".join(f"- {err}" for err in error_list)
+
+    # Repair attempts if first syntax check fails
+
+    onto_patch = cleaned_llm_response
+    for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
+        if syntax_valid:
+            break
+            
+        await stream_text(f"Bad Syntax: Repair attempt {attempt} / {MAX_REPAIR_ATTEMPTS}")
+
+        llm_response = await call_llm_repair(
+            broken_turtle=cleaned_llm_response,
+            error_text=error_text,
+        )
+
+        onto_patch = preprocess_llm_response(llm_response=llm_response)
+        syntax_valid, error_list, graph, fmt = await check_syntax(onto_patch)
+        error_text = "\n".join(f"- {err}" for err in error_list)
+
+    await stream_text(f"Syntax check: {syntax_valid}")  
+    
+    return syntax_valid, onto_patch, graph, error_text

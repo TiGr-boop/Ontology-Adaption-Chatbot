@@ -1,25 +1,9 @@
 import rdflib
 import logging
-import subprocess
-import webbrowser
-import time
-from src.config import ONTOLOGY_DIR, ONTOLOGY_PATH, REWRITE_PROMPT, ONTOLOGY_NAMESPACE
-from rdflib import Graph, URIRef
 import asyncio
 import chainlit as cl
 
 logger = logging.getLogger("ODD-RAG")
-
-def start_chatbot():
-    """
-    Öffnet Chainlit im Browser.
-    """
-    process = subprocess.Popen(
-        ["chainlit", "run", "src/app.py", "--port", "8000"],
-        cwd=ONTOLOGY_DIR)
-    time.sleep(3)  # Warten bis Server hochgefahren ist
-    webbrowser.open("http://localhost:8000")
-    return process
 
 def get_label(graph: rdflib.Graph, uri: rdflib.URIRef) -> str:
     """
@@ -82,3 +66,16 @@ def chunk_ontology(graph: rdflib.Graph,
 
     logger.info("Chunking abgeschlossen: %d Entitäts-Chunks erzeugt.", len(chunks))
     return chunks
+
+async def stream_text(text: str, delay: float = 0.01):
+    msg = cl.Message(content="")
+    await msg.send()
+    
+    for char in text:
+        await msg.stream_token(char)
+        await asyncio.sleep(delay)
+    
+    await msg.update()
+    return msg
+
+

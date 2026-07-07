@@ -6,6 +6,7 @@ import rdflib
 import sys
 from sentence_transformers import SentenceTransformer
 import chromadb
+
 from src.functions import chunk_ontology
 from src.config import EMBEDDING_MODEL, ONTOLOGY_PATH, CHROMA_COLLECTION_NAME
 
@@ -44,7 +45,6 @@ def create_collection_from_ontology():
     texts = [c["text"] for c in chunks]
     ids = [f"chunk_{i}" for i, _ in enumerate(chunks)]
     metas    = [{
-                "chunk_id":     c["chunk_id"],
                 "label":        c["label"],
                 "entity_type":  c["entity_type"],
                 "turtle":       c["turtle"]
