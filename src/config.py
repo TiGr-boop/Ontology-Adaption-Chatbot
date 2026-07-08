@@ -16,8 +16,8 @@ MAX_REPAIR_ATTEMPTS = 2
 
 ### PATHS ###
 
-ONTOLOGY_PATH = Path("ontology.rdf")
-ONTOLOGY_DIR = Path(ONTOLOGY_PATH).parents[0]
+ONTOLOGY_DIR = Path(__file__).resolve().parent.parent
+ONTOLOGY_PATH = ONTOLOGY_DIR / "ontology.rdf"
 FINAL_ONTOLOGY_PATH = ONTOLOGY_DIR / "final_ontology.rdf"
 
 
