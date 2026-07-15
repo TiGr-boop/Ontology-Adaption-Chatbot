@@ -2,7 +2,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from config import ONTOLOGY_DIR
+from src.config import ONTOLOGY_DIR
 
 
 def start_chainlit():

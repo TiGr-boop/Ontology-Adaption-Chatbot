@@ -327,7 +327,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasSafeWorkingLoad">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasQuantity"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Weight_scalar"/>
     </owl:ObjectProperty>
     
@@ -411,7 +411,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasState">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Rooms"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Sterility"/>
     </owl:ObjectProperty>
     
@@ -422,7 +422,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasSterility">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#hasState"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Rooms"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Sterility"/>
     </owl:ObjectProperty>
     
@@ -560,7 +560,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeAcceleration -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#DtypeAcceleration">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
     </owl:DatatypeProperty>
     
 
@@ -1354,7 +1354,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Action -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Action">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
     </owl:Class>
     
 
@@ -1551,7 +1551,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Components -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Components">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
     </owl:Class>
     
 
@@ -1623,7 +1623,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Diagnosis -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Diagnosis">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient_state"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient"/>
     </owl:Class>
     
 
@@ -1835,7 +1835,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Health_data -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Health_data">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient_state"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient"/>
     </owl:Class>
     
 
@@ -2007,7 +2007,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Internal_light -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Internal_light">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
     </owl:Class>
     
 
@@ -2180,6 +2180,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Motorized_vehicle -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Motorized_vehicle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Road_user"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Name -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Name">
@@ -2293,17 +2301,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient"/>
+    
+
+
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient_room -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient_room">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Room_type"/>
     </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient_state -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient_state"/>
     
 
 
@@ -2318,7 +2326,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Personal_data -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Personal_data">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient_state"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Patient"/>
     </owl:Class>
     
 
@@ -3089,15 +3097,7 @@
 
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Road_user"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle_capabilities"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
     
 
 
@@ -3238,7 +3238,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Ambulance -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Ambulance">
-        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Motorized_vehicle"/>
     </owl:NamedIndividual>
     
 
@@ -3737,7 +3737,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Fire_truck -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Fire_truck">
-        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Motorized_vehicle"/>
     </owl:NamedIndividual>
     
 
@@ -4240,7 +4240,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Passenger_car -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Passenger_car">
-        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Motorized_vehicle"/>
     </owl:NamedIndividual>
     
 
@@ -4929,7 +4929,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Automated_or_connected_vehicle_(V2V) -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Automated_or_connected_vehicle_(V2V)">
-        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Motorized_vehicle"/>
     </owl:NamedIndividual>
     
 
@@ -4937,7 +4937,7 @@
     <!-- http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Disabled_vehicle_(broken-down) -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Disabled_vehicle_(broken-down)">
-        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Vehicle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#Motorized_vehicle"/>
     </owl:NamedIndividual>
     
 
