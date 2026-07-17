@@ -76,7 +76,7 @@ def preprocess_llm_response(llm_response: str) -> str:
     return turtle_str
 
 
-async def guard_rail_layer(ontology_patch):
+async def guard_rail_layer(ontology_patch, scenario):
     step_message = ("Step 3/5: GUARD RAIL LAYER")
     await stream_text(step_message)
 
@@ -98,6 +98,7 @@ async def guard_rail_layer(ontology_patch):
         llm_response = await call_llm_repair(
             broken_turtle=cleaned_llm_response,
             error_text=error_text,
+            scenario=scenario
         )
 
         onto_patch = preprocess_llm_response(llm_response=llm_response)

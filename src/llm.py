@@ -117,7 +117,7 @@ async def call_llm(prompt: str, system_prompt: str = SYSTEM_PROMPT, model: str =
     await msg.update()
     return full_response
 
-async def call_llm_repair(broken_turtle: str, error_text: str, model: str = REPAIR_MODEL) -> str:
+async def call_llm_repair(broken_turtle: str, error_text: str, scenario: str, model: str = REPAIR_MODEL) -> str:
     """
     Sendet falsche Turtle-Serialisierung + Fehlermeldungen ans LLM zur Korrektur.
     Wird aufgerufen wenn check_syntax() fehlschlägt.
@@ -125,6 +125,8 @@ async def call_llm_repair(broken_turtle: str, error_text: str, model: str = REPA
     repair_prompt = (
         "The following Turtle snippet is syntactically invalid.\n\n"
         f"{broken_turtle}\n\n"
+        "It should include those ontology changes:\n"
+        f"{scenario}"
         "Thare the Parser errors\n\n"
         f"{error_text}\n\n"
         "Fix all syntax errors and return only the corrected Turtle block."

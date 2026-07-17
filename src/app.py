@@ -57,7 +57,7 @@ async def main(message: cl.Message):
 
     ### STEP 3: GUARD RAIL LAYER ###
 
-    syntax_valid, onto_patch, graph, error_text = await guard_rail_layer(ontology_patch=llm_response)
+    syntax_valid, onto_patch, graph, error_text = await guard_rail_layer(ontology_patch=llm_response, scenario=rewritten_scenario)
 
     if not syntax_valid:
         await stream_text(f"Syntax not valid!\n{error_text}")
