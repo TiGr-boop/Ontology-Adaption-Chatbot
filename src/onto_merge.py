@@ -25,9 +25,10 @@ def diff_between_ontos(base_onto: Graph, patch_onto: Graph) -> tuple[set, set]:
         # owl:deprecated Triples werden entfernt (siehe System Prompt in der config)
         removed = set()
         DEPRECATED = URIRef("http://www.w3.org/2002/07/owl#deprecated")
-        for subj, pred, obj in patch_onto.triples((None, DEPRECATED, None)):
+        for subj, _, obj in patch_onto.triples((None, DEPRECATED, None)):
             if str(obj).lower() in ("true", "1"):
                 removed.update(base_onto.triples((subj, None, None)))
+                removed.update(base_onto.triples((None, None, subj)))
 
         return added, removed
 

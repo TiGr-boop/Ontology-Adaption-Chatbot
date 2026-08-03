@@ -1,9 +1,10 @@
 import subprocess
 import sys
-from pathlib import Path
+import logging
 
 from src.config import ONTOLOGY_DIR
 
+logger = logging.getLogger(__file__)
 
 def start_chainlit():
     subprocess.run(

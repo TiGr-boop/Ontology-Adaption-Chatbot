@@ -5,7 +5,7 @@ from llm import build_llm_prompt, call_llm
 
 import logging
 
-logger = logging.getLogger(__file__)
+logger = logging.getLogger(__name__)
 
 async def ontology_patch_generation(rewritten_scenario: str) -> str:
     step_message = ("Step 2/5: ONTOLOGY PATCH GENERATION")

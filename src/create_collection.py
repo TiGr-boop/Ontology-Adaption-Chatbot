@@ -10,6 +10,9 @@ import chromadb
 from src.functions import chunk_ontology
 from src.config import EMBEDDING_MODEL, ONTOLOGY_PATH, CHROMA_COLLECTION_NAME
 
+from collections import Counter
+
+logger = logging.getLogger(__file__)
 
 def create_collection_from_ontology():
     """
@@ -41,6 +44,7 @@ def create_collection_from_ontology():
     onto = rdflib.Graph()
     onto.parse(str(ONTOLOGY_PATH))
     chunks = chunk_ontology(onto, OWL_ENTITY_TYPES)
+    logger.info(Counter(c["entity_type"] for c in chunks))
 
     texts = [c["text"] for c in chunks]
     ids = [f"chunk_{i}" for i, _ in enumerate(chunks)]

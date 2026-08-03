@@ -127,9 +127,9 @@ async def call_llm_repair(broken_turtle: str, error_text: str, scenario: str, mo
         f"{broken_turtle}\n\n"
         "It should include those ontology changes:\n"
         f"{scenario}"
-        "Thare the Parser errors\n\n"
+        "Those are the Parser errors\n\n"
         f"{error_text}\n\n"
-        "Fix all syntax errors and return only the corrected Turtle block."
+        "Fix all syntax errors and return only the corrected Turtle block inside of turtle fences."
     )
     response = await call_llm(repair_prompt, system_prompt=REPAIR_SYSTEM_PROMPT)
     return response

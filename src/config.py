@@ -1,15 +1,22 @@
 from pathlib import Path
 
-### BASICS ###
+### PARAMETERS ###
 
 EMBEDDING_MODEL = "all-MiniLM-L12-v2"
 CHROMA_COLLECTION_NAME = "ODD_embeddings"
-LLM_MODEL = 'llama3:8B' #'gpt-5'     #'llama3.2:1b' zu klein
+LLM_MODEL = 'llama3:8b'#gpt-5.6' #'gpt-5'     #'llama3.2:1b' zu klein
 REPAIR_MODEL = 'codellama:7b'#'gpt-5' 
 OPENAI_API_KEY = ""
-NUM_RETRIEVED_CHUNKS_QR = 10
-NUM_RETRIEVED_CHUNKS_CO = 4
+NUM_RETRIEVED_CHUNKS_QR = 584
+NUM_RETRIEVED_CHUNKS_CO = 584
 MAX_REPAIR_ATTEMPTS = 2
+
+
+
+### OPTIONS ###
+
+STREAMING_SPEED = 0   # Number equals the delay per stream --> the smaller the faster
+SHOW_CHUNKS = False   # Defines if the retrieved Chunks for Requirement Extraction get streamed to Chainlit --> not recommended for large Number of Chunks  
 
 
 
@@ -34,9 +41,12 @@ STANDARD_PREFIXES = {
 
 
 
-### PROMPTS ###
+### SYSTEM PROMPTS ###
 
-SYSTEM_PROMPT = f"""1. Respond ONLY with valid Turtle syntax inside a single ```turtle ... ``` code block.
+SYSTEM_PROMPT = f"""
+You are an ontology expert and get a change request of an existing ontology.
+
+1. Respond ONLY with valid Turtle syntax inside a single ```turtle ... ``` code block.
 2. Do NOT output explanations, markdown text, or prose outside the Turtle block.
 3. Generate ONLY a minimal differential patch.
 4. Do NOT regenerate the entire ontology.
@@ -50,6 +60,7 @@ SYSTEM_PROMPT = f"""1. Respond ONLY with valid Turtle syntax inside a single ```
    - rdf:type
    - rdfs:subClassOf
    - owl:Restriction
+   - owl:deprecated
    - owl:equivalentClass
    - owl:disjointWith
    - owl:ObjectProperty
@@ -73,12 +84,11 @@ Output ONLY the corrected Turtle inside a single ```turtle ... ``` block.
 Do NOT explain anything. Do NOT add prose. Fix ONLY consistency errors.
 """
 
-REWRITE_PROMPT = f"""You are an ontology requirements analyst for OWL-DL ontologies in the domain of autonomous hospital transport systems.
+REWRITE_PROMPT = """
+You are an ontology requirements analyst for OWL-DL ontologies in the domain of autonomous hospital transport systems.
 
 Your task:
 Transform the user scenario into the MINIMAL set of ontology changes needed.
-
-Rules:
 
 Output requirements:
 1. Output ONLY a numbered list of concrete ontology changes in English.
@@ -93,8 +103,17 @@ Requirement format:
 - For new properties: "Add ObjectProperty <PropertyName> with domain <Class> and range <Class>."
 - For new individuals: "Add individual <IndividualName> of type <Class>."
 - For modifications: "Modify class <ClassName>: add restriction [...]."
-You do NOT need to add new classes, properties and individuals. For some usecases only a single class or a single property may be enough.
-
-Existing ontology chunks:
-
+- For object property assertions: "Add assertion <Subject> <ObjectProperty> <Object>."
+- For data property assertions: "Add assertion <Subject> <DataProperty> "<LiteralValue>"^^<Datatype>."
+- For class modifications:
+  "Modify class <ClassName>: add restriction <Restriction>."
+- For object property modifications:
+  "Modify ObjectProperty <PropertyName>: <Modification>."
+- For data property modifications:
+  "Modify DataProperty <PropertyName>: <Modification>."
+- For removals:
+  "Remove assertion <Subject> <Property> <Object>."
+  "Remove individual <IndividualName>."
+  "Remove class <ClassName>."
+You do NOT need to add new classes, properties, individuals and assertions. For some usecases only a single class or a single property may be enough.
 """

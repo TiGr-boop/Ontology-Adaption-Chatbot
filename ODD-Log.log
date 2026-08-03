@@ -63,3 +63,200 @@
 2026-07-17 15:06:46,346 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
 2026-07-17 15:06:46,346 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
 2026-07-17 15:06:46,346 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-17 15:12:46,089 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-17 15:12:46,344 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-07-17 15:12:46,348 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-17 15:12:46,348 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-17 15:32:40,957 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-17 15:32:41,236 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-07-17 15:32:41,236 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-17 15:32:41,236 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-17 16:05:21,437 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-17 16:05:21,710 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-07-17 16:05:21,716 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-17 16:05:21,716 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-17 17:13:02,944 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-17 17:13:03,210 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-07-17 17:13:03,210 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-17 17:13:03,210 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-17 17:15:26,320 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-17 17:15:26,563 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-07-17 17:15:26,563 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-17 17:15:26,563 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-17 17:23:36,821 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-17 17:23:37,088 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-07-17 17:23:37,088 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-17 17:23:37,088 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-17 17:26:35,475 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-17 17:26:35,742 [INFO] ODD-RAG – Chunking abgeschlossen: 584 Entitäts-Chunks erzeugt.
+2026-07-17 17:26:35,742 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-17 17:26:35,742 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 11:25:39,233 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 11:25:39,520 [INFO] ODD-RAG – Chunking abgeschlossen: 571 Entitäts-Chunks erzeugt.
+2026-07-21 11:25:39,523 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 11:25:39,523 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 11:25:49,432 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 11:25:49,682 [INFO] ODD-RAG – Chunking abgeschlossen: 571 Entitäts-Chunks erzeugt.
+2026-07-21 11:25:49,686 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 11:25:49,686 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 11:29:33,440 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 11:29:33,706 [INFO] ODD-RAG – Chunking abgeschlossen: 571 Entitäts-Chunks erzeugt.
+2026-07-21 11:29:33,708 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 11:29:33,708 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 14:29:52,831 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 14:29:53,092 [INFO] ODD-RAG – Chunking abgeschlossen: 571 Entitäts-Chunks erzeugt.
+2026-07-21 14:29:53,097 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 14:29:53,097 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 14:48:26,858 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 14:48:27,115 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 14:48:27,118 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 14:48:27,118 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 14:56:14,578 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 14:56:14,849 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 14:56:14,853 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 14:56:14,853 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 15:02:34,736 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 15:02:34,986 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 15:02:34,986 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 15:02:34,988 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 15:02:34,988 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 15:03:42,248 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 15:03:42,490 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 15:03:42,490 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 15:03:42,493 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 15:03:42,493 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 15:10:44,075 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 15:10:44,328 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 15:10:44,329 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 15:10:44,332 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 15:10:44,332 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 16:24:12,978 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 16:24:13,224 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 16:24:13,224 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 16:24:13,228 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 16:24:13,228 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 16:38:26,376 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 16:38:26,623 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 16:38:26,623 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 16:38:26,626 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 16:38:26,626 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 16:45:15,819 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 16:45:16,059 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 16:45:16,060 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 16:45:16,062 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 16:45:16,062 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 20:38:01,954 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 20:38:02,245 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 20:38:02,246 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 20:38:02,249 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 20:38:02,249 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 20:45:46,634 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 20:45:46,879 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 20:45:46,879 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 20:45:46,879 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 20:45:46,879 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-21 21:12:25,325 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-21 21:12:25,577 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-21 21:12:25,577 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-21 21:12:25,577 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-21 21:12:25,577 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-22 08:15:00,374 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-22 08:15:00,652 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-22 08:15:00,652 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-22 08:15:00,655 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-22 08:15:00,655 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-22 20:52:18,862 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-22 20:52:19,176 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-22 20:52:19,177 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-22 20:52:19,181 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-22 20:52:19,181 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 09:39:46,801 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 09:39:47,066 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-25 09:39:47,066 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-25 09:39:47,071 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 09:39:47,071 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 09:47:56,671 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 09:47:56,954 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-25 09:47:56,954 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-25 09:47:56,954 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 09:47:56,954 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 09:58:10,999 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 09:58:11,260 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-25 09:58:11,260 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-25 09:58:11,269 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 09:58:11,269 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 10:21:04,208 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 10:21:04,495 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-25 10:21:04,496 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-25 10:21:04,499 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 10:21:04,499 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 13:24:33,590 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 13:24:33,858 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-25 13:24:33,858 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-25 13:24:33,858 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 13:24:33,858 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 13:32:19,293 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 13:32:19,566 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-25 13:32:19,566 [INFO] ODD-RAG – Counter({'NamedIndividual': 219, 'Class': 217, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-25 13:32:19,570 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 13:32:19,570 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 13:57:15,372 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 13:57:15,609 [INFO] ODD-RAG – Chunking abgeschlossen: 572 Entitäts-Chunks erzeugt.
+2026-07-25 13:57:15,609 [INFO] ODD-RAG – Counter({'NamedIndividual': 223, 'Class': 213, 'DatatypeProperty': 84, 'ObjectProperty': 52})
+2026-07-25 13:57:15,625 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 13:57:15,625 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 14:28:59,261 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 14:28:59,531 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-25 14:28:59,531 [INFO] ODD-RAG – Counter({'Class': 217, 'NamedIndividual': 186, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-25 14:28:59,533 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 14:28:59,533 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 14:29:56,291 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 14:29:56,532 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-25 14:29:56,532 [INFO] ODD-RAG – Counter({'Class': 217, 'NamedIndividual': 186, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-25 14:29:56,532 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 14:29:56,532 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-25 15:11:29,398 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-25 15:11:29,678 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-25 15:11:29,679 [INFO] ODD-RAG – Counter({'Class': 221, 'NamedIndividual': 182, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-25 15:11:29,682 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-25 15:11:29,682 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-28 16:26:19,008 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-28 16:26:19,297 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-28 16:26:19,298 [INFO] ODD-RAG – Counter({'Class': 221, 'NamedIndividual': 182, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-28 16:26:19,301 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-28 16:26:19,301 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-28 17:47:25,358 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-28 17:47:25,617 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-28 17:47:25,617 [INFO] ODD-RAG – Counter({'Class': 221, 'NamedIndividual': 182, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-28 17:47:25,620 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-28 17:47:25,620 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-29 08:08:07,071 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-29 08:08:07,336 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-29 08:08:07,336 [INFO] ODD-RAG – Counter({'Class': 221, 'NamedIndividual': 182, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-29 08:08:07,340 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-29 08:08:07,340 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-29 08:44:45,125 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-29 08:44:45,409 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-29 08:44:45,409 [INFO] ODD-RAG – Counter({'Class': 217, 'NamedIndividual': 186, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-29 08:44:45,412 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-29 08:44:45,412 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-29 08:58:02,970 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-29 08:58:03,237 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-29 08:58:03,237 [INFO] ODD-RAG – Counter({'Class': 221, 'NamedIndividual': 182, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-29 08:58:03,240 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-29 08:58:03,240 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-29 09:23:42,973 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-29 09:23:43,246 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-29 09:23:43,247 [INFO] ODD-RAG – Counter({'Class': 221, 'NamedIndividual': 182, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-29 09:23:43,252 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-29 09:23:43,252 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-29 10:00:41,474 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-29 10:00:41,724 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-29 10:00:41,724 [INFO] ODD-RAG – Counter({'Class': 221, 'NamedIndividual': 182, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-29 10:00:41,727 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-29 10:00:41,727 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2
+2026-07-29 10:09:01,177 [INFO] ODD-RAG – Lade Ontologie 'C:\Users\Tim\Documents\1 Uni\Forschungsarbeit\Ontology-Adaption-Chatbot\ontology.rdf'
+2026-07-29 10:09:01,432 [INFO] ODD-RAG – Chunking abgeschlossen: 540 Entitäts-Chunks erzeugt.
+2026-07-29 10:09:01,433 [INFO] ODD-RAG – Counter({'Class': 217, 'NamedIndividual': 186, 'DatatypeProperty': 84, 'ObjectProperty': 53})
+2026-07-29 10:09:01,435 [INFO] sentence_transformers.SentenceTransformer – Use pytorch device_name: cpu
+2026-07-29 10:09:01,435 [INFO] sentence_transformers.SentenceTransformer – Load pretrained SentenceTransformer: all-MiniLM-L12-v2

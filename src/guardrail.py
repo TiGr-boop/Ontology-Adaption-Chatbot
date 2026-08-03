@@ -7,7 +7,7 @@ import logging
 import re
 from asyncio import to_thread
 
-logger = logging.getLogger("ODD-RAG")
+logger = logging.getLogger("__file__")
 
 async def check_syntax(llm_response: str) -> tuple[bool, list, Graph, str]:
     """
@@ -26,6 +26,7 @@ async def check_syntax(llm_response: str) -> tuple[bool, list, Graph, str]:
     for format in SUPPORTED_FORMATS:
         graph = Graph()
         try:
+            logger.debug("Typ: %s", type(llm_response))
             await to_thread(graph.parse, data=llm_response, format=format)
             logger.info("Syntax-Validierung erfolgreich (Format: %s).", format)
             return True, error_list, graph, format
@@ -44,13 +45,35 @@ def preprocess_llm_response(llm_response: str) -> str:
 
     Folgende Probleme werden behoben:
     1. Markdown-Fences werden entfernt
-    2. Fehlende spitze Klammern in @prefix-Zeilen werden ergänzt
-    3. Standard-Präfixe werden einfügt, sofern nicht vorhanden
-    4. undefiniertes ex-Präfix wird aufgelöst
+    2. Default-Namespace des Parsers durch Ontologie-Namespace ersetzen
+    3. Fehlende spitze Klammern in @prefix-Zeilen werden ergänzt
+    4. Standard-Präfixe werden einfügt, sofern nicht vorhanden
     """
 
+    # in String überführen, wenn Byte-Stream erhalten wird
+    if isinstance(llm_response, bytes):
+        llm_response = llm_response.decode("utf-8")
+
+    # String-Repräsentation eines Bytes-Objekts ("b'...'" oder 'b"..."')
+    if isinstance(llm_response, str):
+        llm_response = llm_response.strip()
+
+        if (
+            (llm_response.startswith("b'") and llm_response.endswith("'"))
+            or
+            (llm_response.startswith('b"') and llm_response.endswith('"'))
+        ):
+            llm_response = llm_response[2:-1]
+
+            # Escape-Sequenzen (\n, \t, ...) wieder in echte Zeichen umwandeln
+            llm_response = bytes(llm_response, "utf-8").decode("unicode_escape")
+
     # 1. Markdown-Fence extrahieren (```turtle ... ``` oder ``` ... ```)
-    fence_match = re.search(r"```(?:turtle|rdf|n3|xml)?\s*(.*?)```", llm_response, re.DOTALL)
+    fence_match = re.search(
+        r"^\s*```(?:turtle|rdf|n3|ntriples|xml)?\s*(.*?)\s*```\s*$",
+        llm_response,
+        flags=re.DOTALL | re.MULTILINE,
+    )
     if fence_match:
         turtle_str = fence_match.group(1).strip()
         logger.debug("Markdown-Fence entfernt.")
@@ -58,14 +81,29 @@ def preprocess_llm_response(llm_response: str) -> str:
         turtle_str = llm_response.strip()
         logger.warning("Keine Markdown-fences gefunden. Rohe LLM-Response wird genutzt.")
 
-    # 2. Fehlende spitze Klammern um URIs in @prefix-Zeilen ergänzen
+    # Backup, falls Regex scheitert
+    turtle_str = turtle_str.replace("```turtle", "")
+    turtle_str = turtle_str.replace("```rdf", "")
+    turtle_str = turtle_str.replace("```xml", "")
+    turtle_str = turtle_str.replace("```n3", "")
+    turtle_str = turtle_str.replace("```", "")
+    turtle_str = turtle_str.strip()
+
+    # 2. Default-Namespace des Parsers durch Ontologie-Namespace ersetzen
+    turtle_str = re.sub(
+        r"@prefix\s+:\s*<http://example\.com/>\s*\.",
+        "@prefix : <http://www.semanticweb.org/tim/ontologies/2026/3/untitled-ontology-32#> .",
+        turtle_str,
+    )
+
+    # 3. Fehlende spitze Klammern um URIs in @prefix-Zeilen ergänzen
     turtle_str = re.sub(
         r"(@prefix\s+[\w-]*:\s+)(https?://[^\s<>]+?)(\s*\.)",
         r"\1<\2>\3",
         turtle_str,
     )
 
-    # 3. Fehlende Präfixe adden
+    # 4. Fehlende Präfixe adden
     defined_pres = set(re.findall(r"@prefix\s+([\w-]*):", turtle_str))
     added_pres = []
     for prefix, uri in STANDARD_PREFIXES.items():
